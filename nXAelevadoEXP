@@ -1,0 +1,29 @@
+.data
+.text
+.globl main
+
+main: 
+	li $v0,5
+	syscall
+	move $s0,$v0 #cara que vai multiplicar
+	
+	li $v0,5
+	syscall
+	move $s1,$v0 #expoente
+	
+	li $t0,1
+	
+	jal power
+	
+	mul $t0,$s0,$s2
+	j print
+	
+power:
+	li $t1,1
+	sllv $s2,$t1,$s1
+	jr $ra
+	
+print:
+	li $v0,1
+	la $a0,($t0)
+	syscall

@@ -1,0 +1,25 @@
+.data
+.text
+.globl main
+
+main:
+	li $s0, 2
+	li $s1, 3
+	j power
+
+
+
+power:
+	li $t1, 0
+	li $t0,1
+	loop:
+		addi $t1,$t1,1
+		mul $t0,$s0,$t0
+		bne $t1,$s1,loop
+		j print
+		
+	
+print:
+	li $v0,1
+	la $a0,($t0)
+	syscall
